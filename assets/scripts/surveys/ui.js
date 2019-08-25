@@ -9,7 +9,11 @@ const getSurveysSuccess = data => {
   const usersSurveys = data.surveys.filter(survey => survey.owner === store.user._id)
   const showMySurveys = showSurveysTemplate({ surveys: usersSurveys })
   $('.content').show()
-  $('.content').html(showMySurveys)
+  if (!showMySurveys) {
+    $('.content').html('<p class="empty-content">No survey\'s to show yet. Use the drop down menu to make one now!</p>')
+  } else {
+    $('.content').html(showMySurveys)
+  }
   $('#auth').hide()
   $('#show-my-surveys').hide()
   $('#take-surveys').show()
@@ -19,7 +23,11 @@ const takeSurveySuccess = data => {
   $('.content').html('')
   const otherSurveys = data.surveys.filter(survey => survey.owner !== store.user._id)
   const showOthersSurveys = takeSurveysTemplate({ surveys: otherSurveys })
-  $('.content').html(showOthersSurveys)
+  if (!showOthersSurveys) {
+    $('.content').html('<p class="empty-content">No survey\'s to show yet. Use the drop down menu to make one now!</p>')
+  } else {
+    $('.content').html(showOthersSurveys)
+  }
   $('#show-my-surveys').show()
   $('#take-surveys').hide()
 }
