@@ -8,6 +8,7 @@
 
 const authEvents = require('./auth/events')
 const surveyEvents = require('./surveys/events.js')
+const promptEvents = require('./prompts/events')
 
 // going to colaberate with Béthy for sign-up/sign-in
 $(() => {
@@ -50,4 +51,5 @@ $(() => {
   $('.hide-on-signed-out').hide()
   // pull in event handlers from surveys/events.js
   surveyEvents.addHandlers()
+  promptEvents.addHandlers()
 })
