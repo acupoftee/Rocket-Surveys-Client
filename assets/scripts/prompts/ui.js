@@ -5,20 +5,20 @@ const showPromptsTemplate = require('../templates/view-scaled-surveys.handlebars
 const store = require('./../store')
 
 const getPromptsSuccess = data => {
-  $('.content').html('')
+  $('.rating-content').html('')
   const usersPrompts = data.prompts.filter(prompt => prompt.owner === store.user._id)
   const showMyPrompts = showPromptsTemplate({ prompts: usersPrompts })
-  $('.content').show()
-  $('.content').html(showMyPrompts)
+  $('.rating-content').show()
+  $('.rating-content').html(showMyPrompts)
   $('#auth').hide()
   $('#show-my-surveys').hide()
   $('#take-surveys').show()
 }
 
 const takePromptSuccess = data => {
-  $('.content').html('')
+  $('.rating-content').html('')
   const showOthersPrompts = takePromptsTemplate({ prompts: data.prompts })
-  $('.content').html(showOthersPrompts)
+  $('.rating-content').html(showOthersPrompts)
   $('#show-my-surveys').show()
   $('#take-surveys').hide()
 }
@@ -38,7 +38,7 @@ const deletePromptFailure = (data) => {
 
 const updatePromptSuccess = (data) => {
   const showPromptsHtml = showPromptsTemplate({ prompts: data.prompts })
-  $('.content').html(showPromptsHtml)
+  $('.rating-content').html(showPromptsHtml)
 }
 
 const createPromptSuccessful = () => {

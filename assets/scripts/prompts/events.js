@@ -20,7 +20,7 @@ const onTakePrompts = event => {
     .catch(ui.failure)
 }
 
-const onGetPrompts = (event) => {
+const onGetPrompts = () => {
   api.getPrompts()
     .then(ui.getPromptsSuccess)
     .catch(ui.failure)
@@ -102,8 +102,8 @@ const onAnswerPrompt = event => {
 
 const addHandlers = () => {
   $('body').on('click', '.settings', onSettings)
-  $('body').on('submit', '.edit-survey', onUpdatePrompt)
-  $('body').on('click', '.delete-survey-button', onDeletePrompt)
+  $('body').on('submit', '.edit-prompt', onUpdatePrompt)
+  $('body').on('click', '.delete-prompt-button', onDeletePrompt)
   $('#create-scaled-survey').on('submit', onCreatePrompt)
   $('body').on('click', '.survey-response', onAnswerPrompt)
 }

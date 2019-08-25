@@ -2,6 +2,7 @@
 
 const store = require('./../store')
 const surveyEvents = require('../surveys/events.js')
+const promptEvents = require('../prompts/events.js')
 
 const signUpSuccess = () => {
   $('form').trigger('reset')
@@ -46,6 +47,7 @@ const signInSuccess = (data) => {
   $('#take-surveys').show()
   // show surveys on sign in
   surveyEvents.onGetSurveys()
+  promptEvents.onGetPrompts()
 }
 
 const signInFailure = () => {
