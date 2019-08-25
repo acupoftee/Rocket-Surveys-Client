@@ -44,6 +44,7 @@ $(() => {
 
   // Show Create Survey modal from menu item click
   $('#create-survey-link').on('click', () => $('#create-survey-modal').modal('show'))
+  $('#create-scaled-link').on('click', () => $('#create-scaled-modal').modal('show'))
   $('#take-surveys').on('click', surveyEvents.onTakeSurveys)
   $('#show-my-surveys').on('click', surveyEvents.onGetSurveys)
   $('.hide-on-signed-out').hide()
