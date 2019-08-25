@@ -46,8 +46,14 @@ $(() => {
   // Show Create Survey modal from menu item click
   $('#create-survey-link').on('click', () => $('#create-survey-modal').modal('show'))
   $('#create-scaled-link').on('click', () => $('#create-scaled-modal').modal('show'))
-  $('#take-surveys').on('click', surveyEvents.onTakeSurveys)
-  $('#show-my-surveys').on('click', surveyEvents.onGetSurveys)
+  $('#take-surveys').on('click', event => {
+    surveyEvents.onTakeSurveys(event)
+    promptEvents.onTakePrompts(event)
+  })
+  $('#show-my-surveys').on('click', event => {
+    surveyEvents.onGetSurveys(event)
+    promptEvents.onGetPrompts(event)
+  })
   $('.hide-on-signed-out').hide()
   // pull in event handlers from surveys/events.js
   surveyEvents.addHandlers()
