@@ -15,6 +15,7 @@ const onSettings = event => {
 
 const onTakePrompts = event => {
   event.preventDefault()
+  $('#empty-content').html('')
   $('#rating-content').html('')
   api.takePrompts()
     .then(ui.takePromptSuccess)

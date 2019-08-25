@@ -16,6 +16,7 @@ const onSettings = event => {
 const onTakeSurveys = event => {
   event.preventDefault()
   $('#content').html('')
+  $('#empty-content').html('')
   api.takeSurveys()
     .then(ui.takeSurveySuccess)
     .catch(ui.failure)
