@@ -17,7 +17,8 @@ const getSurveysSuccess = data => {
 
 const takeSurveySuccess = data => {
   $('.content').html('')
-  const showOthersSurveys = takeSurveysTemplate({ surveys: data.surveys })
+  const otherSurveys = data.surveys.filter(survey => survey.owner !== store.user._id)
+  const showOthersSurveys = takeSurveysTemplate({ surveys: otherSurveys })
   $('.content').html(showOthersSurveys)
   $('#show-my-surveys').show()
   $('#take-surveys').hide()

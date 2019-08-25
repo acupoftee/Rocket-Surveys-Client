@@ -88,6 +88,7 @@ const signOutSuccess = () => {
   $('#not-signed-in').show()
   $('.change-password-top').hide()
   $('.content').html('')
+  $('.rating-content').html('')
   $('.hide-on-signed-out').hide()
   $('#show-my-surveys').hide()
   $('#take-surveys').hide()

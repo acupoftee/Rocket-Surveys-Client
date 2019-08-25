@@ -60,13 +60,13 @@ const updatePrompt = function (id, formData) {
 
 const answerPrompt = function (promptId, questionResponse) {
   return $.ajax({
-    url: config.apiUrl + '/responses',
+    url: config.apiUrl + '/ratings',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data: {
-      response: {
+      rating: {
         answer: questionResponse,
         survey: promptId
       }

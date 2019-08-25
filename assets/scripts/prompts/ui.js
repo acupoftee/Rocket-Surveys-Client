@@ -17,7 +17,8 @@ const getPromptsSuccess = data => {
 
 const takePromptSuccess = data => {
   $('.rating-content').html('')
-  const showOthersPrompts = takePromptsTemplate({ prompts: data.prompts })
+  const otherPrompts = data.prompts.filter(prompt => prompt.owner !== store.user._id)
+  const showOthersPrompts = takePromptsTemplate({ prompts: otherPrompts })
   $('.rating-content').html(showOthersPrompts)
   $('#show-my-surveys').show()
   $('#take-surveys').hide()

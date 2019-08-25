@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const surveyEvents = require('../surveys/events')
 
 // create settings id variable
 let pid = ''
@@ -14,7 +15,7 @@ const onSettings = event => {
 
 const onTakePrompts = event => {
   event.preventDefault()
-  $('#content').html('')
+  $('#rating-content').html('')
   api.takePrompts()
     .then(ui.takePromptSuccess)
     .catch(ui.failure)
@@ -36,6 +37,7 @@ const onUpdatePrompt = (event) => {
   api.updatePrompt(id, formData)
     .then(() => {
       // need to "re-get" to see newly updated surveys
+      surveyEvents.onGetSurveys(event)
       onGetPrompts(event)
       $('.r-settings-modal').modal('hide')
       $('body').removeClass('modal-open')
@@ -78,17 +80,11 @@ const onAnswerPrompt = event => {
   const surveyId = $(event.target).data('id')
 
   let questionResponse
-
-  if ($('input[type=radio][name=answer]:checked').val() === 'yes') {
-    // yes += 1
-    questionResponse = true
-    $('#authNotification').text('Response recorded.')
-  } else if ($('input[type=radio][name=answer]:checked').val() === 'no') {
-    // no += 1
-    questionResponse = false
-    $('#authNotification').text('Response recorded.')
-  } else {
+  if (!$('input[type=radio][name=answer]:checked').val()) {
     $('#authNotification').text('Please enter a response.')
+  } else {
+    questionResponse = +$('input[type=radio][name=answer]:checked').val()
+    $('#authNotification').text('Response recorded.')
   }
   api.answerPrompt(surveyId, questionResponse)
     .then(() => {
@@ -107,7 +103,7 @@ const addHandlers = () => {
   $('body').on('submit', '.edit-prompt', onUpdatePrompt)
   $('body').on('click', '.delete-prompt-button', onDeletePrompt)
   $('#create-scaled-survey').on('submit', onCreatePrompt)
-  $('body').on('click', '.survey-response', onAnswerPrompt)
+  $('body').on('click', '.prompt-response', onAnswerPrompt)
 }
 
 module.exports = {

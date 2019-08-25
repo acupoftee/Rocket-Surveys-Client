@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const promptEvents = require('../prompts/events')
 
 // create settings id variable
 let sid = ''
@@ -36,6 +37,7 @@ const onUpdateSurvey = (event) => {
     .then(() => {
       // need to "re-get" to see newly updated surveys
       onGetSurveys(event)
+      promptEvents.onGetPrompts(event)
       $('.settings-modal').modal('hide')
       $('body').removeClass('modal-open')
       $('.modal-backdrop').hide()
