@@ -57,6 +57,7 @@ const onDeleteSurvey = (event) => {
   api.deleteSurvey(id)
     .then(() => {
       onGetSurveys(event)
+      $('body').removeClass('modal-open')
       $('.modal-backdrop').hide()
     })
     .then(ui.deleteSurveySuccess)

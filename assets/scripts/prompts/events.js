@@ -3,7 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
-const surveyEvents = require('../surveys/events')
+// const surveyEvents = require('../surveys/events')
 
 // create settings id variable
 let pid = ''
@@ -37,7 +37,6 @@ const onUpdatePrompt = (event) => {
   api.updatePrompt(id, formData)
     .then(() => {
       // need to "re-get" to see newly updated surveys
-      surveyEvents.onGetSurveys(event)
       onGetPrompts(event)
       $('.r-settings-modal').modal('hide')
       $('body').removeClass('modal-open')
@@ -58,6 +57,7 @@ const onDeletePrompt = (event) => {
   api.deletePrompt(id)
     .then(() => {
       onGetPrompts(event)
+      $('body').removeClass('modal-open')
       $('.modal-backdrop').hide()
     })
     .then(ui.deletePromptSuccess)
