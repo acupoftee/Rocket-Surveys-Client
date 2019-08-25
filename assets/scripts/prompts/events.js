@@ -32,7 +32,6 @@ const onGetPrompts = () => {
 const onUpdatePrompt = (event) => {
   event.preventDefault()
   const id = pid
-  console.log('hitting this update prompt function', pid)
   const form = event.target
   const formData = getFormFields(form)
   api.updatePrompt(id, formData)
