@@ -1,0 +1,38 @@
+{{#each prompts as |prompt|}}
+  <div class="card bg-primary text-white text-center mb-3 tile" data-id="{{prompt._id}}">
+    <div class="card-body">
+
+       <h5 class="card-title">{{prompt.question}}</h5>
+       <p class="card-text">1: {{yesses prompt.responses}} ratings</p>
+       <p class="card-text">2: {{nos prompt.responses}} ratings</p>
+       <p class="card-text">1: {{yesses prompt.responses}} ratings</p>
+       <p class="card-text">2: {{nos prompt.responses}} ratings</p>
+       <p class="card-text">1: {{yesses prompt.responses}} ratings</p>
+       <button type="button" data-id="{{prompt._id}}" data-toggle="modal" data-target=".settings-modal" class="btn settings btn-secondary text-white">Settings</button>
+     </div>
+  </div>
+
+  <!-- Update and Delete Modal -->
+  <div class="modal fade settings-modal" id="settings-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Settings</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form class="edit-prompt">
+        <div class="modal-body">
+           <input type="text" name="prompt[question]" placeholder="Edit question..." required>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary">Edit Survey</button>
+          <button type="button" class="btn btn-danger delete-prompt-button" data-dismiss="modal">Delete Survey</button>
+        </div>
+       </form>
+      </div>
+    </div>
+  </div>
+
+{{/each}}

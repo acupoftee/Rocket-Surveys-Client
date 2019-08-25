@@ -1,0 +1,20 @@
+{{#each prompts as |prompt|}}
+<!-- {{#if (eq prompt.id userID)}} -->
+<!-- <h1> {{userID.id}} </h1> -->
+  <div class="card" data-id="{{prompt._id}}">
+    <div class="card-body">
+       <h5 class="card-title">{{prompt.question}}</h5>
+
+       <!-- <p class="card-text">{{habit.streak}}</p> -->
+       <form class="answer">
+         <input type="radio" name="answer" value="1"> 1<br>
+         <input type="radio" name="answer" value="2"> 2<br>
+         <input type="radio" name="answer" value="3"> 3<br>
+         <input type="radio" name="answer" value="4"> 4<br>
+         <input type="radio" name="answer" value="5"> 5<br>
+         <button type="click" class="prompt-response btn-primary" data-id="{{prompt._id}}" data-question="{{prompt.question}}">Submit</button>
+       </form>
+    </div>
+  </div>
+  <!-- {{/if}} -->
+  {{/each}}
