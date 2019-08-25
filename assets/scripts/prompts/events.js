@@ -5,11 +5,11 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 
 // create settings id variable
-let sid = ''
+let pid = ''
 
 // set settings id to the survey that was clicked - for update & delete
 const onSettings = event => {
-  sid = $(event.target).data('id')
+  pid = $(event.target).data('id')
 }
 
 const onTakePrompts = event => {
@@ -29,14 +29,16 @@ const onGetPrompts = () => {
 // update survey
 const onUpdatePrompt = (event) => {
   event.preventDefault()
-  const id = sid
+  const id = pid
+  console.log('hitting this update prompt function', pid)
   const form = event.target
   const formData = getFormFields(form)
   api.updatePrompt(id, formData)
     .then(() => {
       // need to "re-get" to see newly updated surveys
       onGetPrompts(event)
-      $('#settings-modal').modal('hide')
+      $('.r-settings-modal').modal('hide')
+      $('body').removeClass('modal-open')
       $('.modal-backdrop').hide()
     },
     $('#authNotification').text('Survey updated.')
@@ -50,7 +52,7 @@ const onUpdatePrompt = (event) => {
 }
 
 const onDeletePrompt = (event) => {
-  const id = sid
+  const id = pid
   api.deletePrompt(id)
     .then(() => {
       onGetPrompts(event)
@@ -101,7 +103,7 @@ const onAnswerPrompt = event => {
 }
 
 const addHandlers = () => {
-  $('body').on('click', '.settings', onSettings)
+  $('body').on('click', '.rating-settings', onSettings)
   $('body').on('submit', '.edit-prompt', onUpdatePrompt)
   $('body').on('click', '.delete-prompt-button', onDeletePrompt)
   $('#create-scaled-survey').on('submit', onCreatePrompt)

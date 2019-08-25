@@ -36,7 +36,8 @@ const onUpdateSurvey = (event) => {
     .then(() => {
       // need to "re-get" to see newly updated surveys
       onGetSurveys(event)
-      $('#settings-modal').modal('hide')
+      $('.settings-modal').modal('hide')
+      $('body').removeClass('modal-open')
       $('.modal-backdrop').hide()
     },
     $('#authNotification').text('Survey updated.')
