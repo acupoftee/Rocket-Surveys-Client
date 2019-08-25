@@ -24,7 +24,7 @@
         <!-- These contents will be revealed when the user clicks on "Username" -->
         <div class="dropdown-menu">
           <a class="dropdown-item" id="create-survey-link" href="#">Create Survey</a>
-          <a class="dropdown-item" id="create-survey-link" href="#">Create Scaled Survey</a>
+          <a class="dropdown-item" id="create-scaled-survey-link" href="#">Create Scaled Survey</a>
           <a class="dropdown-item" id="take-surveys" href="#">Take Survey</a>
           <a class="dropdown-item" id="show-my-surveys" href="#">View My Surveys</a>
         </div>
@@ -110,6 +110,40 @@
               <button type="submit" id="submit-create" class="btn btn-primary">Submit</button>
 
               <!-- Closes the survey WITHOUT submit -->
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATE Scaled SURVEY MODAL -->
+    <div class="modal fade" id="create-scaled-survey-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create New Scaled Survey</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- This form creates a POST request to /surveys. This will send a survey
+            title and a question. Both fields are required.-->
+            <p class="create-survey-failure"></p>
+            <form id="create-scaled-survey">
+              <div class="form-group">
+                <!-- Survey Title Input -->
+                <input type="text" class="form-control" name="prompt[title]" placeholder="Title" required>
+              </div>
+              <div class="form-group">
+                <!-- Survey Question Input -->
+                <input type="text" class="form-control" name="prompt[question]" placeholder="Scaled Question" required>
+              </div>
+              <!-- Closes the prompt WITH submit -->
+              <button type="submit" id="submit-create-scaled" class="btn btn-primary">Submit</button>
+
+              <!-- Closes the prompt WITHOUT submit -->
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </form>
           </div>
