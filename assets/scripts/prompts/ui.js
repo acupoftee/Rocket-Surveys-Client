@@ -10,7 +10,7 @@ const getPromptsSuccess = data => {
   const showMyPrompts = showPromptsTemplate({ prompts: usersPrompts })
   $('.rating-content').show()
   if (!showMyPrompts) {
-    $('.content').html('<p class="empty-content">No survey\'s to show yet. Use the drop down menu to make one now!</p>')
+    $('.content').html('<p class="empty-content">No surveys to show yet. Use the drop down menu to make one now!</p>')
   } else {
     $('.rating-content').html(showMyPrompts)
   }
@@ -24,7 +24,7 @@ const takePromptSuccess = data => {
   const otherPrompts = data.prompts.filter(prompt => prompt.owner !== store.user._id)
   const showOthersPrompts = takePromptsTemplate({ prompts: otherPrompts })
   if (!showOthersPrompts) {
-    $('.content').html('<p class="empty-content">No survey\'s to show yet. Use the drop down menu to make one now!</p>')
+    $('.content').html('<p class="empty-content">No surveys to show yet. Use the drop down menu to make one now!</p>')
   } else {
     $('.rating-content').html(showOthersPrompts)
   }

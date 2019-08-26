@@ -10,7 +10,7 @@ const getSurveysSuccess = data => {
   const showMySurveys = showSurveysTemplate({ surveys: usersSurveys })
   $('.content').show()
   if (!showMySurveys) {
-    $('.content').html('<p class="empty-content">No survey\'s to show yet. Use the drop down menu to make one now!</p>')
+    $('.content').html('<p class="empty-content">No surveys to show yet. Use the drop down menu to make one now!</p>')
   } else {
     $('.content').html(showMySurveys)
   }
@@ -24,7 +24,7 @@ const takeSurveySuccess = data => {
   const otherSurveys = data.surveys.filter(survey => survey.owner !== store.user._id)
   const showOthersSurveys = takeSurveysTemplate({ surveys: otherSurveys })
   if (!showOthersSurveys) {
-    $('.content').html('<p class="empty-content">No survey\'s to show yet. Use the drop down menu to make one now!</p>')
+    $('.content').html('<p class="empty-content">No surveys to show yet. Use the drop down menu to make one now!</p>')
   } else {
     $('.content').html(showOthersSurveys)
   }
